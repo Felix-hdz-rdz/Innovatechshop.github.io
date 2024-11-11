@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovatech Shop</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #35af16;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #d5dee2;
+        }
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            width: calc(33.333% - 20px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .product h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .product p {
+            font-size: 0.9em;
+            color: #555;
+        }
+        .price {
+            font-size: 1.1em;
+            color: #333;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #555;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: 20px;
+        }
+        /* Estilos para el carrito */
+        #cart {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 40px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        #cart h3 {
+            margin-top: 0;
+        }
+        #cart-items {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        #cart-items li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        #cart-total {
+            font-weight: bold;
+            text-align: right;
+            margin-top: 10px;
+        }
+        /* Estilos para el formulario de pago */
+        .payment-form {
+            background-color: #25a9c0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .payment-form label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        .payment-form input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .payment-form button {
+            background-color: #b8363c;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 1em;
+        }
+        .payment-form button:hover {
+            background-color: #555;
+        }
+    </style>
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            displayCart();
+        }
+
+        function displayCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = '';
+
+            let total = 0;
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+                cartItemsContainer.appendChild(li);
+                total += item.price;
+            });
+
+            document.getElementById('cart-total').textContent = `Total: $${total.toFixed(2)}`;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>INNOVATECH SHOP</h1>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhyzn18ZCfAbF8I4TX_36RuT2g2QyhI97ORw&s">
+        <p>Productos Tecnologicos</p>
+    </header>
+
+    <div class="container">
+        <h2>Bienvenido a Innovatech Shop, 
+            tu tienda online de tecnología de información de confianza.
+            Explora nuestra amplia gama de productos y servicios diseñados para mejorar tu experiencia digital. </h2>
+        <div class="product-list">
+            <!-- Producto 1 -->
+            <div class="product">
+                <img src="https://portatiles.top/wp-content/uploads/msi-cyborg-15.jpg">
+                <h3>1-.Laptop de alta gama</h3>
+                <p>Potente laptop con procesador Intel Core i7, 16GB RAM, 512GB SSD. Ideal para trabajo y entretenimiento.</p>
+                <p class="price">$10,200.00</p>
+                <button class="btn" onclick="addToCart('Laptop de alta gama', 10200.00)">Comprar</button>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="product">
+                <img src="https://http2.mlstatic.com/D_NQ_NP_926126-MLM76392467502_052024-O.webp">
+                <h3>2-.Monitor de 27 pulgadas</h3>
+                <p>Monitor Full HD de 27 pulgadas con resolución 1920x1080 y tecnología IPS para colores vibrantes.</p>
+                <p class="price">$4,500.00</p>
+                <button class="btn" onclick="addToCart('Monitor de 27 pulgadas', 4,500.00)">Comprar</button>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="product">
+                <img src="https://d22k5h68hofcrd.cloudfront.net/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/6/u/6uu47a_imagenprincipalsintexto.jpg">
+                <h3>3-.Impresora Multifuncional</h3>
+                <p>Impresora, escáner y copiadora en un solo dispositivo. Conectividad WiFi y compatible con impresiones móviles.</p>
+                <p class="price">$6,000.00</p>
+                <button class="btn" onclick="addToCart('Impresora Multifuncional', 6000.00)">Comprar</button>
+            </div>
+        
+            <!-- Producto 4 -->
+            <div class="product">
+                <img src="https://i5.walmartimages.com/asr/809124d6-dcd9-4517-bd49-2d7ae6f4b44d.ad9f4a143671eb019a2818920fcccdec.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF">
+                <h3>4-.Xbox Series X</h3>
+                <p>La serie Xbox X está equipada con una GPU AMD RDNA 2 equivalente a un NVIDIA RTX 2070 Super. La consola puede ofrecer gráficos de alta fidelidad y juegos de resolución 4K.</p>
+                <p class="price">$10,500.00</p>
+                <button class="btn" onclick="addToCart('Xbox Series X', 10500.00)">Comprar</button>
+            </div>
+        
+            <!-- Producto 5 -->
+            <div class="product">
+                <img src="https://cdn1.coppel.com/images/catalog/pm/2896893-1.jpg?iresize=width:400,height:320">
+                <h3>5-.Television 75 pulgadas</h3>
+                <p>es una excelente opción para quien quiera una pantalla que ocupe un espacio grande u ofrezca una experiencia especialmente inmersiva en una habitación más pequeña .</p>
+                <p class="price">$18,000.00</p>
+                <button class="btn" onclick="addToCart('Television 75 Pulgadas', 18000.00)">Comprar</button>
+            </div>
+        
+            <!-- Producto 6 -->
+            <div class="product">
+                <img src="https://resources.sears.com.mx/medios-plazavip/fotos/productos_sears1/original/3705614.jpg?scale=500&qlty=75">
+                <h3>6-.Apple Watch</h3>
+                <p>El Apple Watch no sólo es perfecto para hacer senderismo, andar en bicicleta y correr, también está listo para ir contigo a nadar, surfear y practicar muchas actividades acuáticas más.</p>
+                <p class="price">$850.00</p>
+                <button class="btn" onclick="addToCart('Apple Wacth', 850)">Comprar</button>
+            </div>
+        
+             <!-- Producto 7 -->
+             <div class="product">
+                <img src="https://cpdjuga.com.mx/wp-content/uploads/2022/03/ALEXA-3erA-GENERACION.jpg">
+                <h3>7-.Asistente Alexa</h3>
+                <p>La integración de Alexa te permite escuchar música, leer las noticias, consultar el clima, hacer listas, programar temporizadores, controlar tu hogar inteligente y mucho más.</p>
+                <p class="price">$550.00</p>
+                <button class="btn" onclick="addToCart('Asistente Alexa', 550)">Comprar</button>
+            </div>
+        
+             <!-- Producto 8 -->
+             <div class="product">
+                <img src="https://www.macstoreonline.com.mx/img//lp/iphone-16/header_iphone_16_pro_rose_titanium_large.png">
+                <h3>8-.iphone 15 Pro Max</h3>
+                <p>Destaca el iPhone 15 Pro Max que ahora cuenta con un zoom óptico 5x. Un súper teleobjetivo al nivel de un 70mm de cámara convencional que te da una visión diferente de todo lo que te rodea pero con la calidad óptica.</p>
+                <p class="price">$19,000.00</p>
+                <button class="btn" onclick="addToCart('iphone 15 Pro Max', 19000.00)">Comprar</button>
+            </div>
+        
+        
+        
+        
+        </div>
+    </div>
+
+    
+
+    
+    
+    <div class="container">
+        <div id="cart">
+            <h3>Carrito de Compras</h3>
+            <ul id="cart-items"></ul>
+            <p id="cart-total">Total: $0.00</p>
+        </div>
+
+        <!-- Formulario de pago -->
+        <div class="payment-form">
+            <h3>Información de Pago</h3>
+            <form action="#" method="post">
+                <label for="card-name">Nombre del Titular</label>
+                <input type="text" id="card-name" name="card-name" required>
+
+                <label for="card-number">Número de Tarjeta</label>
+                <input type="text" id="card-number" name="card-number" required maxlength="16">
+
+                <label for="expiry-date">Fecha de Expiración</label>
+                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/AA" required maxlength="5">
+
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" required maxlength="3">
+
+                <button type="submit">Procesar Pago</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>Contacto: innovatech@shop.com | Tel: +52 8112178876</p>
+        <p>© 2024 Innovatech Shop. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
+
